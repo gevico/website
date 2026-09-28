@@ -1,0 +1,602 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;750&display=swap");
+
+:root {
+    font-family:
+        "Noto Sans SC",
+        -apple-system,
+        BlinkMacSystemFont,
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
+    color: #fff;
+    background: #080f25;
+    font-synthesis: none;
+    --blue: #3479fa;
+    --cyan: #a2f1f8;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+button {
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 6px;
+}
+::selection {
+    background: var(--blue);
+    color: #fff;
+}
+svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.wrap {
+    width: min(1360px, calc(100% - 96px));
+    margin-inline: auto;
+}
+.home {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+}
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background:
+        linear-gradient(110deg, #071025b3, #07122c42),
+        url("/assets/community-background.png") center / cover;
+}
+.hero-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #060d2120, transparent 50%, #080f2580);
+}
+.ambient {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(75px);
+    will-change: transform;
+}
+.ambient-blue {
+    width: 75vw;
+    height: 65vw;
+    top: -65%;
+    right: -20%;
+    background: radial-gradient(ellipse, #3479fa75, #3479fa00 65%);
+    animation: drift-blue 22s ease-in-out infinite alternate;
+}
+.ambient-cyan {
+    width: 70vw;
+    height: 42vw;
+    bottom: -35%;
+    left: -22%;
+    background: radial-gradient(
+        ellipse,
+        #a2f1f85c,
+        #3479fa24 45%,
+        transparent 70%
+    );
+    animation: drift-cyan 19s ease-in-out infinite alternate;
+}
+.light-ribbon {
+    position: absolute;
+    width: 140%;
+    height: 70%;
+    left: -12%;
+    top: 51%;
+    border-top: 2px solid #83d6ff50;
+    border-radius: 50%;
+    transform: rotate(-24deg);
+    filter: blur(1px);
+    box-shadow:
+        0 -30px 100px #3479fa20,
+        inset 0 35px 65px #51c7ed0c;
+}
+.ribbon-two {
+    top: 73%;
+    left: -15%;
+    opacity: 0.5;
+    border-color: #a2f1f844;
+}
+.hero-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
+}
+@keyframes drift-blue {
+    to {
+        transform: translate(-12%, 14%) scale(1.15);
+    }
+}
+@keyframes drift-cyan {
+    to {
+        transform: translate(20%, -12%) scale(1.12);
+    }
+}
+.header {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    min-height: 100px;
+    border-bottom: 1px solid #ffffff12;
+}
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+}
+.brand img {
+    display: block;
+    background: transparent;
+}
+.brand-name {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 650;
+    font-size: 23px;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+nav {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+    font-size: 11px;
+    color: #d9e3f4;
+    margin-left: auto;
+}
+nav > a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+nav > a:hover {
+    color: var(--cyan);
+}
+nav [data-icon] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+.nav-blog {
+    padding-left: 25px;
+    border-left: 1px solid #ffffff25;
+}
+.github-label {
+    display: none;
+}
+.nav-github [data-icon] {
+    width: 21px;
+    height: 21px;
+}
+.language-switch {
+    color: #d9e3f4;
+    background: #ffffff08;
+    border: 1px solid #ffffff30;
+    border-radius: 5px;
+    min-width: 48px;
+    min-height: 36px;
+    padding: 8px 10px;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+.language-switch:hover {
+    color: var(--cyan);
+    background: #ffffff12;
+}
+.menu-toggle {
+    display: none;
+}
+.hero {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 95px 0 120px;
+    min-height: 580px;
+}
+.hero-copy {
+    width: 100%;
+}
+.eyebrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: #afc3df;
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: 3px;
+    font-size: 10px;
+    margin: 0 0 30px;
+}
+.status-dot {
+    width: 5px;
+    height: 5px;
+    background: var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 14px var(--cyan);
+}
+h1 {
+    font-size: clamp(56px, 6.8vw, 98px);
+    line-height: 1.3;
+    font-weight: 750;
+    letter-spacing: 7px;
+    margin: 0;
+    text-shadow: 0 4px 40px #00000018;
+}
+.hero-motto {
+    font-size: clamp(25px, 2.6vw, 36px);
+    letter-spacing: 5px;
+    color: #e0e9ff;
+    margin: 22px 0 26px;
+    font-weight: 500;
+}
+.hero-motto span {
+    color: var(--cyan);
+}
+.hero-description {
+    color: #b3c0d5;
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 1px;
+    margin: 0;
+}
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 35px;
+}
+.button {
+    min-height: 48px;
+    padding: 13px 25px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition:
+        background 0.2s,
+        transform 0.2s;
+}
+.button:hover {
+    transform: translateY(-3px);
+}
+.primary {
+    background: var(--blue);
+    box-shadow: 0 4px 28px #3479fa22;
+}
+.primary:hover {
+    background: #2467e8;
+}
+.secondary {
+    background: #ffffff05;
+    color: #e7edfa;
+    border-color: #ffffff38;
+    backdrop-filter: blur(12px);
+}
+.secondary:hover {
+    background: #ffffff12;
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    min-height: 70px;
+    padding-block: 20px 28px;
+    color: #9baec8;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+.footer > span:last-child {
+    font-family: monospace;
+    font-size: 9px;
+}
+.skip-link {
+    position: fixed;
+    left: 16px;
+    top: -100px;
+    background: #fff;
+    color: #172640;
+    padding: 12px;
+    z-index: 20;
+}
+.skip-link:focus {
+    top: 12px;
+}
+.english-break {
+    display: none;
+}
+html[lang="en"] h1 {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(54px, 5.7vw, 84px);
+    line-height: 1.08;
+    font-weight: 650;
+    letter-spacing: -3px;
+}
+html[lang="en"] h1 > span {
+    color: #e7f5ff;
+}
+html[lang="en"] .hero-motto {
+    font-size: clamp(20px, 2vw, 28px);
+    letter-spacing: -0.5px;
+    line-height: 1.5;
+    margin-top: 28px;
+}
+html[lang="en"] .hero-description {
+    letter-spacing: 0;
+}
+@media (max-width: 1100px) {
+    .wrap {
+        width: calc(100% - 64px);
+    }
+    .header {
+        gap: 20px;
+    }
+    nav {
+        gap: 19px;
+        font-size: 10px;
+    }
+    .nav-blog {
+        padding-left: 19px;
+    }
+    nav [data-icon] {
+        width: 16px;
+        height: 16px;
+    }
+    h1 {
+        font-size: 76px;
+    }
+}
+@media (max-width: 900px) {
+    .header {
+        min-height: 80px;
+        gap: 13px;
+    }
+    .brand {
+        margin-right: auto;
+    }
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #ffffff40;
+        background: transparent;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .menu-toggle span {
+        width: 18px;
+        height: 1px;
+        background: #fff;
+    }
+    .language-switch {
+        min-height: 40px;
+    }
+    nav {
+        display: none;
+        position: absolute;
+        left: -32px;
+        right: -32px;
+        top: 79px;
+        background: #101c35f5;
+        backdrop-filter: blur(20px);
+        padding: 20px 32px;
+        border-bottom: 1px solid #ffffff20;
+        margin: 0;
+        font-size: 13px;
+    }
+    nav.open {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        align-items: stretch;
+    }
+    nav > a {
+        padding: 15px;
+        gap: 14px;
+        min-height: 46px;
+    }
+    nav [data-icon] {
+        width: 18px;
+        height: 18px;
+    }
+    .nav-blog {
+        border-left: 0;
+        border-top: 1px solid #ffffff15;
+        margin-top: 7px;
+    }
+    .github-label {
+        display: inline;
+    }
+    .hero {
+        min-height: 570px;
+        padding-block: 90px 100px;
+    }
+    h1 {
+        font-size: 65px;
+        letter-spacing: 3px;
+    }
+    .hero-motto {
+        font-size: 29px;
+        letter-spacing: 3px;
+    }
+    .ambient-blue {
+        top: -5%;
+        height: 90vw;
+        width: 100vw;
+    }
+    .ambient-cyan {
+        height: 85vw;
+        width: 110vw;
+        bottom: -20%;
+    }
+    .footer {
+        font-size: 8px;
+    }
+    .footer > span:last-child {
+        font-size: 7px;
+    }
+    html[lang="en"] h1 {
+        font-size: 68px;
+    }
+    html[lang="en"] .hero-motto {
+        font-size: 23px;
+    }
+    .english-break {
+        display: inline;
+    }
+}
+@media (max-width: 520px) {
+    .wrap {
+        width: calc(100% - 40px);
+    }
+    .header {
+        min-height: 76px;
+        gap: 10px;
+    }
+    .brand img {
+        width: 43px;
+        height: 43px;
+    }
+    .brand-name {
+        font-size: 21px;
+    }
+    nav {
+        top: 75px;
+        left: -20px;
+        right: -20px;
+        padding: 16px 20px;
+    }
+    .language-switch {
+        font-size: 10px;
+        padding-inline: 9px;
+    }
+    .hero {
+        min-height: 490px;
+        padding-block: 65px 85px;
+    }
+    .eyebrow {
+        font-size: 7px;
+        letter-spacing: 1px;
+        gap: 8px;
+        margin-bottom: 26px;
+    }
+    h1 {
+        font-size: clamp(37px, 10.5vw, 55px);
+        letter-spacing: 1px;
+        white-space: nowrap;
+    }
+    .hero-motto {
+        font-size: 23px;
+        letter-spacing: 2px;
+        margin-block: 22px;
+    }
+    .hero-description {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+    }
+    .hero-actions {
+        gap: 10px;
+        margin-top: 30px;
+    }
+    .button {
+        font-size: 11px;
+        padding: 12px 16px;
+        gap: 17px;
+    }
+    .light-ribbon {
+        width: 220%;
+        left: -65%;
+        top: 57%;
+        transform: rotate(-35deg);
+    }
+    .ribbon-two {
+        top: 83%;
+    }
+    .footer {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 20px;
+        min-height: 60px;
+        font-size: 7px;
+    }
+    .footer > span:last-child {
+        display: none;
+    }
+    html[lang="en"] h1 {
+        font-size: clamp(36px, 10vw, 52px);
+        white-space: normal;
+        letter-spacing: -1.5px;
+    }
+    html[lang="en"] .eyebrow {
+        font-size: 6px;
+        letter-spacing: 0.6px;
+        gap: 7px;
+    }
+    html[lang="en"] .hero-motto {
+        font-size: 18px;
+        margin-block: 24px 20px;
+    }
+    html[lang="en"] .hero-description {
+        font-size: 11px;
+        line-height: 1.9;
+    }
+    html[lang="en"] .button {
+        font-size: 10px;
+        padding-inline: 12px;
+        gap: 10px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+    .ambient {
+        will-change: auto;
+    }
+}
