@@ -20,12 +20,12 @@ npm run preview
 
 ## GitHub Pages
 
-- 线上首页：https://gevico.github.io/website/
-- 中文：https://gevico.github.io/website/?lang=zh
-- 英文：https://gevico.github.io/website/?lang=en
+- 线上首页：https://gevico.online/
+- 中文：https://gevico.online/?lang=zh
+- 英文：https://gevico.online/?lang=en
 - 部署流程：`.github/workflows/deploy-pages.yml`
 
-GitHub Pages 使用 GitHub Actions 作为发布来源。推送到 `main` 或手动运行工作流后，使用 Node.js 24 和 `npm ci` 安装锁定依赖，构建并发布 `dist/`。构建阶段从 Pages 配置读取实际路径，因此默认的 `/website/` 子路径和后续配置的自定义域名均可使用。
+主域名为 `gevico.online`，在 GitHub Pages 设置中绑定。GitHub Pages 使用 GitHub Actions 作为发布来源。推送到 `main` 或手动运行工作流后，使用 Node.js 24 和 `npm ci` 安装锁定依赖，构建并发布 `dist/`。构建阶段从 Pages 配置读取实际路径：当前自定义域名使用 `/`，切回默认项目地址时使用 `/website/`。域名变更后需要重新运行部署工作流。
 
 本地复现项目路径下的生产构建：
 
@@ -34,6 +34,19 @@ npm ci
 npm run build -- --base /website/
 npm run preview -- --base /website/
 ```
+
+阿里云 DNS 解析配置（默认线路，TTL 使用默认值）：
+
+| 类型 | 主机记录 | 记录值 |
+| --- | --- | --- |
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+
+可选的 `www` 入口使用 CNAME 指向 `gevico.github.io`（不包含仓库路径）。只调整官网相关记录，保留论坛、训练营、邮件等其他记录。DNS 生效且 GitHub 证书签发完成后启用 Enforce HTTPS。自定义 Actions 部署不依赖 CNAME 文件。
+
+配置依据：[GitHub 自定义域名文档](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)。
 
 部署不需要额外配置密钥；工作流使用 GitHub 内置令牌，只有部署任务拥有 Pages 写入和身份令牌权限。
 
