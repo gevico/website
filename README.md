@@ -84,4 +84,4 @@ npm run preview -- --base /website/
 - 背景原图：https://github.com/gevico/gtoc-forum/blob/main/asserts/head.png
 - 视觉参考：https://forum.gevico.online/
 
-哔哩哔哩链接为组织首页提供的社区主理人账号。微信链接保留文章专辑标识，去除会话和追踪参数。
+哔哩哔哩链接为组织首页提供的社区主理人账号。微信公众号入口指向 https://mp.weixin.qq.com/s/RUdyB0EPD9mqY_kpbUAp4g，与组织首页使用相同地址。
